@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-repo
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: test-repo
+  template:
+    metadata:
+      labels:
+        app: test-repo
+
+    spec:
+      containers:
+        - name: test-repo
+          image: 941066304506.dkr.ecr.us-east-1.amazonaws.com/test-repo:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8015
+              protocol: TCP
